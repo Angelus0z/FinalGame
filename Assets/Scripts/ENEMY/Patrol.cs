@@ -56,6 +56,8 @@ public class Patrol : MonoBehaviour
         else
         {
             isPursuing = false;
+
+
         
         }
 

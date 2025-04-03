@@ -12,7 +12,7 @@ public class ItemCollector : MonoBehaviour
 
     private int collectedKeys = 0;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "Coin")
         {
@@ -36,7 +36,7 @@ public class ItemCollector : MonoBehaviour
             {
             
                 print("You need more keys to unlock the gate!");
-                collision.GetComponent<BoxCollider2D>().isTrigger = false;
+                collision.GetComponent<BoxCollider>().isTrigger = false;
             }
 
 
