@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class BatteryCollect : MonoBehaviour
 {
-    int energy = 0;
+    int energy = -1;
     [SerializeField] Text batteryCollectText;
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.tag == "BatteryPickUp");
-        energy++;
-        Destroy(collision.gameObject);
-        batteryCollectText.text = "Energy: " + energy;
+        if (collision.tag == "BatteryPickUp")
+        {
+            energy++;
+            Destroy(collision.gameObject);
+            batteryCollectText.text = "Energy: " + energy;
+        }
 
         if (energy >= 4)
         {
