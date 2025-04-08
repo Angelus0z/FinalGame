@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     private CharacterController Controller;
-    [SerializeField]private Animator anim;
+    //[SerializeField]private Animator anim;
 
     public float speed = 5f;
     public float turnSpeed = 180f;
@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         Controller = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
+       // anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class CharacterMovement : MonoBehaviour
 
         Controller.Move(moveDir * Time.deltaTime - Vector3.up * 0.1f);
 
-        if(speed >= 0.01f)
+       /* if(speed >= 0.01f)
         {
             anim.SetBool("IsMoving", true);
             anim.SetBool("IsStanding", false);
@@ -34,6 +34,6 @@ public class CharacterMovement : MonoBehaviour
         {
             anim.SetBool("IsMoving", true);
             anim.SetBool("IsStanding", false);
-        }
+        }*/
     }
 }
