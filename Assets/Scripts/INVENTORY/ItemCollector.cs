@@ -14,9 +14,10 @@ public class ItemCollector : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.tag == "Coin")
+        if (collision.tag == "Key")
         {
             collectedKeys++;
+            print(collectedKeys);
             Destroy(collision.gameObject);
             GameObject.Find("KeyAmount").GetComponent<Text>().text = " : " + collectedKeys;
         }
