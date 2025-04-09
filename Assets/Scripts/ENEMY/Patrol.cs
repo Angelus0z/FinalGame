@@ -26,6 +26,9 @@ public class Patrol : MonoBehaviour
     [SerializeField]
     float fieldOfView = 45f;
 
+   // [SerializeField]
+    // float rotationSpeed = 2.0f;
+
     private void Update()
     {
         bool isInRange = Vector3.Distance(transform.position, Player.transform.position) < visualRange;
@@ -60,11 +63,16 @@ public class Patrol : MonoBehaviour
 
         
         }
-
+        
+       // float rotationStop = rotationSpeed * Time.deltaTime;
         Vector3 moveTo = waypoints[indexOfNextWaypoint].transform.position;
         Vector3 direction = moveTo - transform.position;
         direction.Normalize();
+        transform.LookAt(waypoints[indexOfNextWaypoint].transform.position);
+        // Quaternion rotation = Quaternion.LookRotation(direction);
         GetComponent<Rigidbody>().velocity = direction.normalized;
+
+        
     }
 
   
@@ -76,16 +84,19 @@ public class Patrol : MonoBehaviour
         {
             if (collision.gameObject.tag == "Waypoint")
             {
+                //transform.LookAt(waypoints[indexOfNextWaypoint].transform.position);
                 if (collision.gameObject == waypoints[indexOfNextWaypoint])
                 {
+
                     print("Reached waypoint " + indexOfNextWaypoint);
                     indexOfNextWaypoint += 1;
-                    
+                    //transform.LookAt(waypoints[indexOfNextWaypoint].transform);
 
                 }
                 if (indexOfNextWaypoint == waypoints.Length)
                 {
                     indexOfNextWaypoint = 0;
+                  
                 }
 
             }
