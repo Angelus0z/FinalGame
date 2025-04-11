@@ -6,38 +6,52 @@ using UnityEngine.UI;
 
 public class ItemCollector : MonoBehaviour
 {
-    public Text KeyAmount;
-
+    //public Text KeyAmount;
+    [SerializeField]
+    GameObject[] doors = new GameObject[5];
+    [SerializeField] Animator animator;
     [SerializeField] PlayerInventory inventory;
 
-    private int collectedKeys = 0;
+  
+    public int collectedKeys = 0;
 
-    private void OnTriggerEnter(Collider collision)
+    public void OnTriggerEnter(Collider collision)
     {
         if (collision.tag == "Key")
         {
             collectedKeys++;
             print(collectedKeys);
             Destroy(collision.gameObject);
-            GameObject.Find("KeyAmount").GetComponent<Text>().text = " : " + collectedKeys;
+
+           // GameObject.Find("KeyAmount").GetComponent<Text>().text = " : " + collectedKeys;
         }
 
-        if (collision.tag == "Gate")
+       if (collision.tag == "Gate")
         {
-            if (collectedKeys >= 3)
+            if (collectedKeys >= 1)
             {
-                
-                Destroy(collision.gameObject);
 
-                collectedKeys = 0;
-                GameObject.Find("KeyAmount").GetComponent<Text>().text = " : " + collectedKeys;
+                Animator doorAnimator = collision.GetComponent<Animator>();
+                doorAnimator.Play("DoubleDoorOpen");
+
+                collectedKeys--;
+
+                BoxCollider doorCollider = collision.GetComponent<BoxCollider>();
+                doorCollider.isTrigger = true;
+
+                GameObject doorLock = GameObject.Find("DoorLock");
+                Destroy(doorLock);
+               
+                
+
+                //  GameObject.Find("KeyAmount").GetComponent<Text>().text = " : " + collectedKeys;
             }
 
-            else
+           else
             {
             
                 print("You need more keys to unlock the gate!");
-                collision.GetComponent<BoxCollider>().isTrigger = false;
+               // collision.GetComponent<BoxCollider>().isTrigger = false;
             }
 
 
@@ -48,6 +62,9 @@ public class ItemCollector : MonoBehaviour
             SceneManager.LoadScene("End Screen");
         }
 
-
+        
+        
+           
+        
     }
 }
