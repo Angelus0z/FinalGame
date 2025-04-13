@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // video for health bar below
 // https://www.youtube.com/watch?v=3JjBJfoWDCM
@@ -36,6 +37,10 @@ public class healthBar : MonoBehaviour
             easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, health, lerpSpeed);
         }
 
+        if(health <= 0)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
         
     }
 

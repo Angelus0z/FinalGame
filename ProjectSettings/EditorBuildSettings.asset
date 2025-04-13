@@ -8,16 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 666a8e7b74f34ef4eb0cd2a6d09a5924
-  - enabled: 1
-    path: Assets/Scenes/Level1 - Oisin.unity
-    guid: 1a5fccde964d3be4bad0cae0aa7677a4
-  - enabled: 1
-    path: Assets/Scenes/Level2 - Jude.unity
-    guid: e53daf7a190d28b449b47ea969d81e4e
-  - enabled: 1
-    path: Assets/Scenes/Level3 - Adam.unity
-    guid: 8a466b2ad11f3cf4abf11de81609b10e
-  - enabled: 1
-    path: Assets/Scenes/EndScene.unity
-    guid: c5ba762b6172e244e904b80c4417596d
+  - enabled: 0
+    path: Assets/Scenes/Greybox-Opening.unity
+    guid: 0f63a20bb6790e14da279166adcc8d3b
+  - enabled: 0
+    path: Assets/Scenes/Greybox2.unity
+    guid: 4cf75231ade217848b5f1cfc99947e8c
+  - enabled: 0
+    path: Assets/Scenes/Greybox3.unity
+    guid: b69897bfb4f030a4ea085cc2fdb46d62
   m_configObjects: {}
