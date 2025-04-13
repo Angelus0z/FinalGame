@@ -59,7 +59,7 @@ public class ItemCollector : MonoBehaviour
 
         if (collision.tag =="End")
         {
-            SceneManager.LoadScene("End Screen");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         
