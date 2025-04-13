@@ -6,27 +6,32 @@ using UnityEngine.UI;
 
 public class ItemCollector : MonoBehaviour
 {
-    //public Text KeyAmount;
+
+    public Text KeyAmount;
+
     [SerializeField]
     GameObject[] doors = new GameObject[5];
     [SerializeField] Animator animator;
     [SerializeField] PlayerInventory inventory;
+    [SerializeField] private GameObject KeyUI;
 
-  
+
     public int collectedKeys = 0;
 
     public void OnTriggerEnter(Collider collision)
     {
+
         if (collision.tag == "Key")
         {
+            KeyUI.SetActive(true);
             collectedKeys++;
             print(collectedKeys);
+            KeyAmount.GetComponent<Text>().text = " : " + collectedKeys;
             Destroy(collision.gameObject);
 
-           // GameObject.Find("KeyAmount").GetComponent<Text>().text = " : " + collectedKeys;
         }
 
-       if (collision.tag == "Gate")
+        if (collision.tag == "Gate")
         {
             if (collectedKeys >= 1)
             {
@@ -41,30 +46,34 @@ public class ItemCollector : MonoBehaviour
 
                 GameObject doorLock = GameObject.Find("DoorLock");
                 Destroy(doorLock);
-               
-                
 
-                //  GameObject.Find("KeyAmount").GetComponent<Text>().text = " : " + collectedKeys;
             }
 
-           else
+            else
             {
-            
+
                 print("You need more keys to unlock the gate!");
-               // collision.GetComponent<BoxCollider>().isTrigger = false;
+                // collision.GetComponent<BoxCollider>().isTrigger = false;
             }
 
 
         }
 
-        if (collision.tag =="End")
+        if (collision.tag == "OisinEnd" && collectedKeys >= 1)
+        {
+            collectedKeys--;
+            print("This is working");
+            SceneManager.LoadScene("Level2-Jude");
+        }
+
+        if (collision.tag == "End")
         {
             SceneManager.LoadScene("End Screen");
         }
 
-        
-        
-           
-        
+
+
+
+
     }
 }

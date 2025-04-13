@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,16 @@ public class healthBar : MonoBehaviour
         if(healthSlider.value != easeHealthSlider.value)
         {
             easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, health, lerpSpeed);
+        }
+
+        
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.name == "RobotEnemy")
+        {
+            takeDamage(10);
         }
     }
 
