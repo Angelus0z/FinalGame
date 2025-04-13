@@ -59,12 +59,12 @@ public class ItemCollector : MonoBehaviour
 
         }
 
-        if (collision.tag == "OisinEnd" && collectedKeys >= 1)
+       /* if (collision.tag == "OisinEnd" && collectedKeys >= 1)
         {
             collectedKeys--;
             print("This is working");
             SceneManager.LoadScene("Level2-Jude");
-        }
+        }*/
 
         if (collision.tag == "End")
         {

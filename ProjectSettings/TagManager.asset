@@ -10,6 +10,8 @@ TagManager:
   - Key
   - Gate
   - OisinEnd
+  - End
+  - EndScreen
   layers:
   - Default
   - TransparentFX
